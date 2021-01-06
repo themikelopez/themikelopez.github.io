@@ -3428,7 +3428,15 @@ input, select, textarea {
 		}
 
 		#banner h1 {
-			font-size: 3.25em;
+			font-size: 3.5em;
+		}
+
+		#banner h6 {
+			text-align: center;;
+		}
+
+		#bannerName {
+			text-transform: ;
 		}
 
 		#banner > .inner {
@@ -3479,7 +3487,7 @@ input, select, textarea {
 				}
 
 				#banner > .inner .content p {
-					font-size: 0.7em;
+					font-size: 1em;
 					font-weight: 600;
 					letter-spacing: 0.25em;
 					text-transform: uppercase;
