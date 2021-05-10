@@ -1,7 +1,7 @@
 ///
-/// Forty by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+/// Hyperbolic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
 ///
 
 /* Icons */
@@ -13,16 +13,37 @@
 
 		li {
 			display: inline-block;
-			padding: 0 1em 0 0;
+			padding: 0 0.75rem 0 0;
 
 			&:last-child {
 				padding-right: 0;
+			}
+
+			.icon {
+
+				&.alt {
+					margin: 0 0.375rem;
+				}
+			}
+		}
+
+		@include breakpoint('<=large') {
+			li {
+				.icon {
+					&.alt {
+						margin: 0 0.25rem;
+					}
+				}
 			}
 		}
 
 		@include breakpoint('<=small') {
 			li {
-				padding: 0 0.75em 0 0;
+				.icon {
+					&.alt {
+						margin: 0;
+					}
+				}
 			}
 		}
 	}

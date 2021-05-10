@@ -1,177 +1,96 @@
 ///
-/// Forty by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+/// Hyperbolic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
 ///
 
 /* Banner */
 
 	#banner {
-		@include vendor('align-items', 'center');
-		@include vendor('background-image', 'url("../../images/banner.jpg")');
-		@include vendor('display', 'flex');
-		@include padding(4em, 0, (2em, 0, 0, 0));
-		background-attachment: fixed;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		border-bottom: 0 !important;
-		cursor: default;
-		height: 60vh;
-		margin-bottom: -3.25em;
-		max-height: 32em;
-		min-height: 22em;
-		position: relative;
-		top: -3.25em;
+		$wrapper-pad: _size(wrapper-pad, default);
 
-		&:after {
-			@include vendor('transition', 'opacity #{_duration(banner)} ease');
-			@include vendor('transition-delay', '0.75s');
+		@include color-button(invert);
+		@include color-typography(invert);
+		@include curve-after;
+		@include padding($wrapper-pad * 1.25, 0);
+		@include vendor('align-items', 'center');
+		@include vendor('display', 'flex');
+		@include vendor('justify-content', 'center');
+		background-attachment: fixed, fixed;
+		background-image: linear-gradient(90deg, #{transparentize(_palette(invert, bg), 0.4)}, #{transparentize(_palette(invert, bg), 0.4)}), url('../../images/banner.jpg');
+		background-position: center, center;
+		background-repeat: repeat, no-repeat;
+		background-size: auto, cover;
+		min-height: calc(75vh + #{_size(element-height) * 2});
+		position: relative;
+		text-align: center;
+
+		&:before {
 			@include vendor('pointer-events', 'none');
-			background-color: _palette(bg);
+			@include vendor('transition', 'opacity 2s ease-in-out 0.75s');
+			background: _palette(bg-alt);
 			content: '';
-			display: block;
 			height: 100%;
 			left: 0;
-			opacity: 0.85;
+			opacity: 0;
 			position: absolute;
 			top: 0;
 			width: 100%;
-			z-index: 1;
 		}
 
-		h1 {
-			font-size: 3.25em;
-		}
-
-		> .inner {
+		> .content {
 			@include vendor('transition', (
-				'opacity 1.5s ease',
-				'transform 0.5s ease-out',
-				'filter 0.5s ease',
-				'-webkit-filter 0.5s ease'
+				'transform 1s ease-in-out',
+				'opacity 1.25s ease-in-out'
 			));
-			padding: 0 !important;
 			position: relative;
-			z-index: 2;
+			z-index: 1;
 
-			.image {
-				display: none;
-			}
-
-			header {
-				width: auto;
-
-				> :first-child {
-					width: auto;
-
-					&:after {
-						max-width: 100%;
-					}
-				}
-			}
-
-			.content {
-				@include vendor('display', 'flex');
-				@include vendor('align-items', 'center');
-				margin: 0 0 _size(element-margin) 0;
-
-				> * {
-					margin-right: 1.5em;
-					margin-bottom: 0;
-				}
-
-				> :last-child {
-					margin-right: 0;
-				}
-
-				p {
-					font-size: 0.7em;
-					font-weight: _font(weight-bold);
-					letter-spacing: _font(letter-spacing-alt);
-					text-transform: uppercase;
-				}
+			> :last-child {
+				margin-bottom: 0;
 			}
 		}
-
-		&.major {
-			height: 75vh;
-			min-height: 30em;
-			max-height: 50em;
-
-			&.alt {
-				opacity: 0.75;
-			}
-		}
-
-		&.style1 { &:after { background-color: _palette(accent1); } }
-		&.style2 { &:after { background-color: _palette(accent2); } }
-		&.style3 { &:after { background-color: _palette(accent3); } }
-		&.style4 { &:after { background-color: _palette(accent4); } }
-		&.style5 { &:after { background-color: _palette(accent5); } }
-		&.style6 { &:after { background-color: _palette(accent6); } }
 
 		body.is-preload & {
-			&:after {
-				opacity: 1.0;
+			&:before {
+				opacity: 1;
 			}
 
-			> .inner {
-				@include vendor('filter', 'blur(0.125em)');
-				@include vendor('transform', 'translateX(-0.5em)');
+			> .content {
+				@include vendor('transform', 'translateY(0.75rem)');
 				opacity: 0;
 			}
 		}
 
 		@include breakpoint('<=large') {
-			background-attachment: scroll;
+			$wrapper-pad: _size(wrapper-pad, large);
+
+			@include padding($wrapper-pad * 1.25, 0);
+			background-attachment: scroll, scroll;
+		}
+
+		@include breakpoint('<=medium') {
+			$wrapper-pad: _size(wrapper-pad, large);
+
+			@include padding($wrapper-pad * 1.25, $wrapper-pad);
 		}
 
 		@include breakpoint('<=small') {
-			@include padding(3em, 0, (2em, 0, 0, 0));
-			height: auto;
-			margin-bottom: -2.75em;
-			max-height: none;
+			$wrapper-pad: _size(wrapper-pad, small);
+
+			@include padding($wrapper-pad * 2, $wrapper-pad * 0.5);
 			min-height: 0;
-			top: -2.75em;
-
-			h1 {
-				font-size: 2em;
-			}
-
-			> .inner {
-				.content {
-					display: block;
-
-					> * {
-						margin-right: 0;
-						margin-bottom: _size(element-margin);
-					}
-				}
-			}
-
-			&.major {
-				height: auto;
-				min-height: 0;
-				max-height: none;
-			}
 		}
 
 		@include breakpoint('<=xsmall') {
-			@include padding(4em, 0, (2em, 0, 0, 0));
+			$wrapper-pad: _size(wrapper-pad, small);
 
-			> .inner {
-				.content {
-					p {
-						br {
-							display: none;
-						}
-					}
-				}
-			}
+			@include padding($wrapper-pad * 2.5, $wrapper-pad * 0.5);
+		}
 
-			&.major {
-				@include padding(6em, 0, (2em, 0, 0, 0));
+		@include breakpoint('<=xsmall') {
+			br {
+				display: none;
 			}
 		}
 	}

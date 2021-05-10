@@ -1,42 +1,36 @@
 ///
-/// Forty by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+/// Hyperbolic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
 ///
 
 /* Footer */
 
 	#footer {
-		.copyright {
-			font-size: 0.8em;
-			list-style: none;
-			padding-left: 0;
+		$wrapper-pad: _size(wrapper-pad, default);
 
-			li {
-				border-left: solid 1px _palette(border);
-				color: _palette(fg-light);
-				display: inline-block;
-				line-height: 1;
-				margin-left: 1em;
-				padding-left: 1em;
+		@include color-typography(invert);
+		@include color-icon(invert);
+		@include curve-before-alt;
+		@include padding($wrapper-pad, 0);
+		background-attachment: fixed, fixed;
+		background-image: linear-gradient(90deg, #{transparentize(_palette(invert, bg), 0.4)}, #{transparentize(_palette(invert, bg), 0.4)}), url('../../images/banner.jpg');
+		background-position: center, center;
+		background-repeat: repeat, no-repeat;
+		background-size: auto, cover;
+		position: relative;
+		text-align: center;
 
-				&:first-child {
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
-			}
+		@include breakpoint('<=large') {
+			$wrapper-pad: _size(wrapper-pad, large);
+
+			@include padding($wrapper-pad, 0);
+			background-attachment: scroll, scroll;
 		}
 
-		@include breakpoint('<=xsmall') {
-			.copyright {
-				li {
-					display: block;
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-					line-height: inherit;
-				}
-			}
+		@include breakpoint('<=small') {
+			$wrapper-pad: _size(wrapper-pad, small);
+
+			@include padding($wrapper-pad, 0);
 		}
 	}

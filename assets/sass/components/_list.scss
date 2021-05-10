@@ -1,7 +1,7 @@
 ///
-/// Forty by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+/// Hyperbolic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
 ///
 
 /* List */
@@ -9,20 +9,20 @@
 	ol {
 		list-style: decimal;
 		margin: 0 0 _size(element-margin) 0;
-		padding-left: 1.25em;
+		padding-left: 1.25rem;
 
 		li {
-			padding-left: 0.25em;
+			padding-left: 0.25rem;
 		}
 	}
 
 	ul {
 		list-style: disc;
 		margin: 0 0 _size(element-margin) 0;
-		padding-left: 1em;
+		padding-left: 1rem;
 
 		li {
-			padding-left: 0.5em;
+			padding-left: 0.325rem;
 		}
 
 		&.alt {
@@ -30,12 +30,16 @@
 			padding-left: 0;
 
 			li {
-				border-top: solid 1px _palette(border);
-				padding: 0.5em 0;
+				border-top: solid 1px;
+				padding: 0.75rem 0;
 
 				&:first-child {
 					border-top: 0;
 					padding-top: 0;
+				}
+
+				&:last-child {
+					padding-bottom: 0;
 				}
 			}
 		}
@@ -51,6 +55,18 @@
 		}
 
 		dd {
-			margin-left: _size(element-margin);
+			margin-left: (_size(element-margin) * 0.75);
 		}
 	}
+
+	@mixin color-list($p: null) {
+		ul {
+			&.alt {
+				li {
+					border-top-color: _palette($p, border);
+				}
+			}
+		}
+	}
+
+	@include color-list;
